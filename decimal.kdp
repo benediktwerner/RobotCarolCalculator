@@ -1,26 +1,9 @@
-methode tr
-  rechtsDrehen
-*methode
-methode tl
-  linksDrehen
-*methode
-methode t2
-  rechtsDrehen
-  rechtsDrehen
-*methode
-
-methode f
-  schritt
-*methode
-methode r
-  tr;f;tl
-*methode
-methode l
-  tl;f;tr
-*methode
-methode b
-  t2;f;t2
-*methode
+einfügen
+  move.kdp
+*einfügen
+einfügen
+  alu.kdp
+*einfügen
 
 methode draw0
   markeSetzen;f
@@ -126,44 +109,25 @@ methode draw9
   markeSetzen
 *methode
 
-methode zuStart
-  wiederhole solange nicht istNorden
-    tr
-  *wiederhole
-  wiederhole solange nicht istWand
-    f
-  *wiederhole
-  tr
-  wiederhole solange nicht istWand
-    f
-  *wiederhole
-  tr
-*methode
-
-methode zuSummand2
-  zuStart
-  f
-*methode
-
-methode zuDezimal1
-  zuStart
+methode toDecimal1
+  toAlu
   tr
   schritt(12)
   tl
 *methode
 
-methode zuDezimal2
-  zuDezimal1
+methode toDecimal2
+  toDecimal1
   schritt(6)
 *methode
 
-methode zuDezimal3
-  zuDezimal1
+methode toDecimal3
+  toDecimal1
   schritt(12)
 *methode
 
-methode zuNächsteDezimal3
-  zuDezimal3
+methode toNextDecimal3Digit
+  toDecimal3
   tr
   wiederhole solange istMarke
     schritt(4)
@@ -171,19 +135,8 @@ methode zuNächsteDezimal3
   tl
 *methode
 
-methode leere
-  tr
-  wiederhole 10 mal
-    markeLöschen
-    f
-  *wiederhole
-  t2
-  schritt(10)
-  tr
-*methode
-
-methode leereDezimal3
-  zuDezimal3;l
+methode clearDecimal3
+  toDecimal3;l
   wiederhole 3 mal
     r
     wiederhole 3 mal
@@ -197,9 +150,8 @@ methode leereDezimal3
   *wiederhole
 *methode
 
-methode leereBlöcke
-  zuSummand2
-  f;f
+methode clearBlocks
+  toRegister
   wiederhole 3 mal
     wiederhole solange istZiegel
       aufheben
@@ -208,78 +160,8 @@ methode leereBlöcke
   *wiederhole
 *methode
 
-methode überlauf1
-  r;markeSetzen;l
-*methode
-methode überlauf0
-  r;markeLöschen;l
-*methode
-methode ergebnis1
-  f;markeSetzen;b
-*methode
-methode ergebnis0
-  f;markeLöschen;b
-*methode
-
-methode additionSchritt
-  wenn istMarke dann
-    f
-    wenn istMarke dann
-      f
-      wenn istMarke dann
-        überlauf1
-        ergebnis1
-      sonst
-        überlauf1
-        ergebnis0
-      *wenn
-    sonst
-      f
-      wenn istMarke dann
-        überlauf1
-        ergebnis0
-      sonst
-        überlauf0
-        ergebnis1
-      *wenn
-    *wenn
-  sonst
-    f
-    wenn istMarke dann
-      f
-      wenn istMarke dann
-        überlauf1
-        ergebnis0
-      sonst
-        überlauf0
-        ergebnis1
-      *wenn
-    sonst
-      f
-      wenn istMarke dann
-        überlauf0
-        ergebnis1
-      sonst
-        überlauf0
-        ergebnis0
-      *wenn
-    *wenn
-  *wenn
-*methode
-
-methode addieren
-  zuStart
-  wiederhole 10 mal
-    additionSchritt
-    tr;f;tr
-    f;f;t2
-  *wiederhole
-*methode
-
-methode ergebnisZuBlöcken
-  zuSummand2
-  f;f
-  tr
+methode registerToBlocks
+  toRegister;tr
   wiederhole solange istWesten
     wiederhole 10 mal
       wenn istWesten dann
@@ -303,14 +185,14 @@ methode ergebnisZuBlöcken
         wenn istZiegel(9) dann
           aufheben(9)
           r
-          hinlegen(rot)
+          hinlegen
           l
         sonst
-          hinlegen(gelb)
+          hinlegen
         *wenn
         l
       sonst
-        hinlegen(grün)
+        hinlegen
       *wenn
       tr
     sonst
@@ -319,36 +201,36 @@ methode ergebnisZuBlöcken
   *wiederhole
 *methode
 
-methode blöckeZuDezimal
+methode blocksToDecimal
   wenn nicht istZiegel dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw0
   sonst wenn istZiegel(1) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw1
   sonst wenn istZiegel(2) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw2
   sonst wenn istZiegel(3) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw3
   sonst wenn istZiegel(4) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw4
   sonst wenn istZiegel(5) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw5
   sonst wenn istZiegel(6) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw6
   sonst wenn istZiegel(7) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw7
   sonst wenn istZiegel(8) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw8
   sonst wenn istZiegel(9) dann
-    zuNächsteDezimal3
+    toNextDecimal3Digit
     draw9
   *wenn
   *wenn
@@ -362,69 +244,45 @@ methode blöckeZuDezimal
   *wenn
 *methode
 
-methode ergebnisZuDezimal
-  ergebnisZuBlöcken
-  zuSummand2;f;f
-  blöckeZuDezimal
-  zuSummand2;f;f
-  wiederhole solange istZiegel
-    aufheben
-  *wiederhole
-  r
-  blöckeZuDezimal
-  zuSummand2;f;f
-  r
-  wiederhole solange istZiegel
-    aufheben
-  *wiederhole
-  r
-  blöckeZuDezimal
-  zuSummand2;f;f
-  r;r
-  wiederhole solange istZiegel
-    aufheben
-  *wiederhole
+methode registerToDecimal
+  registerToBlocks
+
+  toRegister
+  blocksToDecimal
+
+  toRegister;r
+  blocksToDecimal
+
+  toRegister;r;r
+  blocksToDecimal
+
+  clearBlocks
 *methode
 
-methode ergebnisNachSummand1
-  zuStart
-  wiederhole 10 mal
-    f;f;f
-    wenn istMarke dann
-      t2;f;f;f
-      markeSetzen
-    sonst
-      t2;f;f;f
-      markeLöschen
-    *wenn
-    tl;f;tl
-  *wiederhole
-*methode
-
-methode dezimalNachSummand2
+methode decimalToInput2
   f;f;tr;f
   wenn nicht istMarke dann {0,1,7}
     f
     wenn istMarke dann {0}
-      zuSummand2;leere;tr
+      toInput2;clear;tr
     sonst
       tr;f;f
       wenn istMarke dann {7}
-        zuSummand2
-        leere
+        toInput2
+        clear
         tr
         markeSetzen;f
         markeSetzen;f
         markeSetzen
       sonst {1}
-        zuSummand2;leere
+        toInput2;clear
         markeSetzen
       *wenn
     *wenn
   sonst {2,3,4,5,6,8,9}
     f
     wenn nicht istMarke dann {3}
-      zuSummand2;leere;tr
+      toInput2;clear;tr
       markeSetzen;f
       markeSetzen
     sonst {2,4,5,6,8,9}
@@ -434,17 +292,17 @@ methode dezimalNachSummand2
         wenn istMarke dann {6,8}
           tr;f;f
           wenn istMarke dann {8}
-            zuSummand2;leere;tr
+            toInput2;clear;tr
             f;f;f
             markeSetzen
           sonst {6}
-            zuSummand2;leere;tr
+            toInput2;clear;tr
             f
             markeSetzen;f
             markeSetzen
           *wenn
         sonst {2}
-          zuSummand2;leere;tr
+          toInput2;clear;tr
           f;markeSetzen
         *wenn
       sonst {4,5,9}
@@ -452,18 +310,18 @@ methode dezimalNachSummand2
         wenn istMarke dann {5,9}
           t2;f;f;f;tr;f;f
           wenn istMarke dann {9}
-            zuSummand2;leere;tr
+            toInput2;clear;tr
             markeSetzen
             f;f;f
             markeSetzen
           sonst {5}
-            zuSummand2;leere;tr
+            toInput2;clear;tr
             markeSetzen
             f;f
             markeSetzen
           *wenn
         sonst {4}
-          zuSummand2;leere;tr
+          toInput2;clear;tr
           f;f
           markeSetzen
         *wenn
@@ -471,36 +329,3 @@ methode dezimalNachSummand2
     *wenn
   *wenn
 *methode
-
-leereDezimal3
-leereBlöcke
-zuStart
-leere
-
-zuDezimal1
-dezimalNachSummand2
-addieren
-ergebnisNachSummand1
-
-zuDezimal1
-tr;schritt(4);tl
-dezimalNachSummand2
-wiederhole 10 mal
-  addieren
-  ergebnisNachSummand1
-*wiederhole
-
-zuDezimal2
-dezimalNachSummand2
-addieren
-ergebnisNachSummand1
-
-zuDezimal2
-tr;schritt(4);tl
-dezimalNachSummand2
-wiederhole 10 mal
-  addieren
-  ergebnisNachSummand1
-*wiederhole
-
-ergebnisZuDezimal

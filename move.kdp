@@ -1,0 +1,23 @@
+methode tr
+  rechtsDrehen
+*methode
+methode tl
+  linksDrehen
+*methode
+methode t2
+  rechtsDrehen
+  rechtsDrehen
+*methode
+
+methode f
+  schritt
+*methode
+methode r
+  tr;f;tl
+*methode
+methode l
+  tl;f;tr
+*methode
+methode b
+  t2;f;t2
+*methode

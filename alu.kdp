@@ -1,0 +1,173 @@
+einfügen
+  move.kdp
+*einfügen
+
+methode toAlu
+  wiederhole solange nicht istNorden
+    tr
+  *wiederhole
+  wiederhole solange nicht istWand
+    f
+  *wiederhole
+  tr
+  wiederhole solange nicht istWand
+    f
+  *wiederhole
+  tr
+*methode
+
+methode toInput1
+  toAlu
+*methode
+
+methode toInput2
+  toAlu
+  f
+*methode
+
+methode toCarry
+  toAlu
+  schritt(2)
+*methode
+
+methode toResult
+  toAlu
+  schritt(3)
+*methode
+
+methode toRegister
+  toAlu
+  schritt(4)
+*methode
+
+methode clear
+  tr
+  wiederhole 10 mal
+    markeLöschen
+    f
+  *wiederhole
+  t2
+  schritt(10)
+  tr
+*methode
+
+methode setCarry
+  toCarry
+  markeSetzen
+*methode
+methode clearCarry
+  toCarry
+  markeLöschen
+*methode
+
+
+methode carryTo1
+  r;markeSetzen;l
+*methode
+methode carryTo0
+  r;markeLöschen;l
+*methode
+methode resultTo1
+  f;markeSetzen;b
+*methode
+methode resultTo0
+  f;markeLöschen;b
+*methode
+
+methode addBit
+  wenn istMarke dann
+    f
+    wenn istMarke dann
+      f
+      wenn istMarke dann
+        carryTo1
+        resultTo1
+      sonst
+        carryTo1
+        resultTo0
+      *wenn
+    sonst
+      f
+      wenn istMarke dann
+        carryTo1
+        resultTo0
+      sonst
+        carryTo0
+        resultTo1
+      *wenn
+    *wenn
+  sonst
+    f
+    wenn istMarke dann
+      f
+      wenn istMarke dann
+        carryTo1
+        resultTo0
+      sonst
+        carryTo0
+        resultTo1
+      *wenn
+    sonst
+      f
+      wenn istMarke dann
+        carryTo0
+        resultTo1
+      sonst
+        carryTo0
+        resultTo0
+      *wenn
+    *wenn
+  *wenn
+*methode
+
+methode add
+  toAlu
+  wiederhole 10 mal
+    addBit
+    tr;f;tr
+    schritt(2)
+    t2
+  *wiederhole
+*methode
+
+methode resultToInput1
+  toResult
+  wiederhole 10 mal
+    wenn istMarke dann
+      t2;schritt(3)
+      markeSetzen
+    sonst
+      t2;schritt(3)
+      markeLöschen
+    *wenn
+    tl;f;tl
+    schritt(3)
+  *wiederhole
+*methode
+
+methode resultToRegister
+  toResult
+  wiederhole 10 mal
+    wenn istMarke dann
+      f
+      markeSetzen
+    sonst
+      f
+      markeLöschen
+    *wenn
+    tr;f;tr;f;t2
+  *wiederhole
+*methode
+
+methode invertInput2
+  toInput2
+  tr
+  wiederhole 10 mal
+    wenn istMarke dann
+      markeLöschen
+    sonst
+      markeSetzen
+    *wenn
+    f
+  *wiederhole
+*methode

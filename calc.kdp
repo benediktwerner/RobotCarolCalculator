@@ -1,0 +1,47 @@
+einfügen
+  move.kdp
+*einfügen
+einfügen
+  alu.kdp
+*einfügen
+einfügen
+  decimal.kdp
+*einfügen
+
+clearDecimal3
+clearBlocks
+toAlu
+clear
+clearCarry
+
+toDecimal1
+decimalToInput2
+add
+resultToInput1
+toDecimal1
+tr;schritt(4);tl
+decimalToInput2
+wiederhole 10 mal
+  add
+  resultToInput1
+*wiederhole
+
+toDecimal2
+decimalToInput2
+invertInput2
+setCarry
+add
+resultToInput1
+
+toDecimal2
+tr;schritt(4);tl
+decimalToInput2
+invertInput2
+setCarry
+wiederhole 10 mal
+  add
+  resultToInput1
+*wiederhole
+
+resultToRegister
+registerToDecimal
