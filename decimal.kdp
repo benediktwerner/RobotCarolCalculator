@@ -135,9 +135,31 @@ methode toNextDecimal3Digit
   tl
 *methode
 
+methode toNextDecimalRemainderDigit
+  toDecimal3;tl;schritt(10);t2
+  wiederhole solange istMarke
+    schritt(4)
+  *wiederhole
+  tl
+*methode
+
 methode clearDecimal3
   toDecimal3;l
   wiederhole 4 mal
+    r
+    wiederhole 3 mal
+      markeLöschen;f
+      markeLöschen;f
+      markeLöschen;f
+      markeLöschen;f
+      markeLöschen
+      t2;schritt(4);tl;f;tl
+    *wiederhole
+  *wiederhole
+
+  { clear remainder }
+  toDecimal3;tl;schritt(10);tr;l
+  wiederhole 2 mal
     r
     wiederhole 3 mal
       markeLöschen;f
@@ -289,6 +311,49 @@ methode blocksToDecimal
   *wenn
 *methode
 
+methode blocksToDecimalRemainder
+  wenn nicht istZiegel dann
+    toNextDecimalRemainderDigit
+    draw0
+  sonst wenn istZiegel(1) dann
+    toNextDecimalRemainderDigit
+    draw1
+  sonst wenn istZiegel(2) dann
+    toNextDecimalRemainderDigit
+    draw2
+  sonst wenn istZiegel(3) dann
+    toNextDecimalRemainderDigit
+    draw3
+  sonst wenn istZiegel(4) dann
+    toNextDecimalRemainderDigit
+    draw4
+  sonst wenn istZiegel(5) dann
+    toNextDecimalRemainderDigit
+    draw5
+  sonst wenn istZiegel(6) dann
+    toNextDecimalRemainderDigit
+    draw6
+  sonst wenn istZiegel(7) dann
+    toNextDecimalRemainderDigit
+    draw7
+  sonst wenn istZiegel(8) dann
+    toNextDecimalRemainderDigit
+    draw8
+  sonst wenn istZiegel(9) dann
+    toNextDecimalRemainderDigit
+    draw9
+  *wenn
+  *wenn
+  *wenn
+  *wenn
+  *wenn
+  *wenn
+  *wenn
+  *wenn
+  *wenn
+  *wenn
+*methode
+
 methode registerToDecimal
   registerToBlocks
 
@@ -303,6 +368,18 @@ methode registerToDecimal
 
   toRegister;r;r;r
   blocksToDecimal
+
+  clearBlocks
+*methode
+
+methode registerToDecimalRemainder
+  registerToBlocks
+
+  toRegister
+  blocksToDecimalRemainder
+
+  toRegister;r
+  blocksToDecimalRemainder
 
   clearBlocks
 *methode

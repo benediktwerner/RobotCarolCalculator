@@ -215,8 +215,8 @@ methode registerToInput2
   *wiederhole
 *methode
 
-methode invertRegister
-  toRegister
+methode invertInput2
+  toInput2
   tr
   wiederhole 15 mal
     wenn istMarke dann
@@ -229,9 +229,7 @@ methode invertRegister
 *methode
 
 methode sub
-  input2ToRegister
-  invertRegister
-  registerToInput2
+  invertInput2
   setCarry
   add
 *methode
@@ -266,4 +264,48 @@ methode mul
       tr
     *wenn
   *wiederhole
+*methode
+
+methode div
+  invertInput2
+  setCarry
+  toRegister
+  clear
+
+  wenn istNorden dann
+    tr
+  *wenn
+
+  wiederhole solange nicht istNorden
+    add
+    resultToInput1
+    toResult
+    tr;schritt(14)
+
+    wenn istMarke dann        { check sign bit }
+      tr
+    sonst
+      toRegister;tr
+      wiederhole solange istWesten
+        wenn istMarke dann
+          markeLöschen
+          f
+        sonst
+          markeSetzen
+          t2
+        *wenn
+      *wiederhole
+    *wenn
+  *wiederhole
+
+  { calculate remainder }
+  invertInput2
+  clearCarry
+  add
+
+  { move results }
+  toInput1;clear
+  registerToInput2
+  resultToRegister
+  add
 *methode

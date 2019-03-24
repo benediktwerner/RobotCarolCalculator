@@ -59,7 +59,13 @@ wenn istZiegel dann
 sonst
   f
   wenn istZiegel dann
-    add
+    tl
+    wenn istZiegel dann
+      add
+    sonst
+      div
+      registerToDecimalRemainder
+    *wenn
   sonst
     sub
   *wenn

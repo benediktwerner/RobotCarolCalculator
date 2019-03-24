@@ -3,8 +3,8 @@ This is a very simple calculator written for/in RobotCarol, a program/language u
 
 ## How to perform a calculation
 1. Load the `world.kdw` world or run the `build_world.kdp` program in an empty world (width >= 47, height >= 17 and block height must be 10)
-2. Write the two input numbers into the input fields (use 0X for 1-digit numbers e.g. 07). The left side of the example world shows how the numbers should be written.
-3. Modify the arithmetic operator to the operation you want to perform (+ for adding, - for subtracting, x for multiplication, division is not supported)
+2. Write the two input numbers into the input fields in the world (use `0X` for 1-digit numbers e.g. `07`). The left side of the example world shows how the numbers should be written.
+3. Modify the arithmetic operator in the world to the operation you want to perform (`+` for adding, `-` for subtracting, `x` for multiplication, `:` for division)
 4. Run the `calc.kdp`program
 
 ![Example of the calculator world after a calculation](example.png)
