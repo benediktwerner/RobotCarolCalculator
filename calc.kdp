@@ -8,40 +8,52 @@ einfügen
   decimal.kdp
 *einfügen
 
+methode calcDecimal1
+  toDecimal1
+  decimalToInput2
+  add
+  resultToInput1
+  toDecimal1
+  tr;schritt(4);tl
+  decimalToInput2
+  wiederhole 10 mal
+    add
+    resultToInput1
+  *wiederhole
+*methode
+
+methode calcDecimal2
+  toAlu;clear
+  toDecimal2
+  decimalToInput2
+  add
+  resultToInput1
+
+  toDecimal2
+  tr;schritt(4);tl
+  decimalToInput2
+  wiederhole 10 mal
+    add
+    resultToInput1
+  *wiederhole
+*methode
+
+{ clear everything }
 clearDecimal3
 clearBlocks
 toAlu
 clear
 clearCarry
 
-toDecimal1
-decimalToInput2
-add
-resultToInput1
-toDecimal1
-tr;schritt(4);tl
-decimalToInput2
-wiederhole 10 mal
-  add
-  resultToInput1
-*wiederhole
+{ load decimals }
+calcDecimal1
+resultToRegister
+calcDecimal2
+registerToInput1
+resultToRegister
+registerToInput2
 
-toDecimal2
-decimalToInput2
-invertInput2
-setCarry
-add
-resultToInput1
-
-toDecimal2
-tr;schritt(4);tl
-decimalToInput2
-invertInput2
-setCarry
-wiederhole 10 mal
-  add
-  resultToInput1
-*wiederhole
+mul
 
 resultToRegister
 registerToDecimal

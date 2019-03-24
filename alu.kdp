@@ -159,8 +159,64 @@ methode resultToRegister
   *wiederhole
 *methode
 
-methode invertInput2
+methode input1ToRegister
+  toInput1
+  wiederhole 10 mal
+    wenn istMarke dann
+      schritt(4)
+      markeSetzen
+    sonst
+      schritt(4)
+      markeLöschen
+    *wenn
+    tr;f;tr;schritt(4);t2
+  *wiederhole
+*methode
+
+methode input2ToRegister
   toInput2
+  wiederhole 10 mal
+    wenn istMarke dann
+      schritt(3)
+      markeSetzen
+    sonst
+      schritt(3)
+      markeLöschen
+    *wenn
+    tr;f;tr;schritt(3);t2
+  *wiederhole
+*methode
+
+methode registerToInput1
+  toRegister;t2
+  wiederhole 10 mal
+    wenn istMarke dann
+      schritt(4)
+      markeSetzen
+    sonst
+      schritt(4)
+      markeLöschen
+    *wenn
+    tl;f;tl;schritt(4);t2
+  *wiederhole
+*methode
+
+methode registerToInput2
+  toRegister;t2
+  wiederhole 10 mal
+    wenn istMarke dann
+      schritt(3)
+      markeSetzen
+    sonst
+      schritt(3)
+      markeLöschen
+    *wenn
+    tl;f;tl;schritt(3);t2
+  *wiederhole
+*methode
+
+methode invertRegister
+  toRegister
   tr
   wiederhole 10 mal
     wenn istMarke dann
@@ -169,5 +225,45 @@ methode invertInput2
       markeSetzen
     *wenn
     f
+  *wiederhole
+*methode
+
+methode sub
+  input2ToRegister
+  invertRegister
+  registerToInput2
+  setCarry
+  add
+*methode
+
+methode mul
+  input1ToRegister
+  toInput1
+  clear
+  toRegister
+  tr
+  wiederhole solange istWesten
+    wiederhole solange istWesten
+      wenn istZiegel(blau) dann
+        rechtsDrehen
+      sonst
+        wenn istMarke dann
+          markeLöschen
+          rechtsDrehen;rechtsDrehen
+          wiederhole solange nicht istWand
+            schritt
+            markeSetzen
+          *wiederhole
+        sonst
+          schritt
+        *wenn
+      *wenn
+    *wiederhole
+    wenn istOsten dann
+      add
+      resultToInput1
+      toRegister
+      tr
+    *wenn
   *wiederhole
 *methode
