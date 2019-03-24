@@ -162,6 +162,42 @@ methode clearBlocks
 
 methode registerToBlocks
   toRegister;tr
+
+  schritt(13)
+  wenn istMarke dann
+    markeLöschen
+    t2;schritt(13);tr
+    hinlegen(2);r
+    hinlegen(9);r
+    hinlegen(1);r
+    hinlegen(8)
+    tl;schritt(3);t2
+  sonst
+    t2;schritt
+    wenn istMarke dann
+        markeLöschen
+        schritt(12);tr
+        hinlegen(6);r
+        hinlegen(9);r
+        r
+        hinlegen(4)
+        tl;schritt(3);t2
+    sonst
+      schritt
+      wenn istMarke dann
+        markeLöschen
+        schritt(11);tr
+        hinlegen(8);r
+        hinlegen(4);r
+        r
+        hinlegen(2)
+        tl;schritt(3);t2
+      sonst
+        schritt(11);t2
+      *wenn
+    *wenn
+  *wenn
+
   wiederhole solange istWesten
     wiederhole solange istWesten
       wenn istZiegel(blau) dann
