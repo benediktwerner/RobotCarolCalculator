@@ -1,0 +1,168 @@
+einfügen
+  move.kdp
+*einfügen
+einfügen
+  alu.kdp
+*einfügen
+einfügen
+  decimal.kdp
+*einfügen
+
+methode decimalBlock
+  wiederhole 5 mal
+    wiederhole 3 mal
+      hinlegen;f
+    *wiederhole
+    tl;f;tl;schritt(3);t2
+  *wiederhole
+*methode
+
+{ alu }
+
+toAlu;tr
+schritt(15);t2
+wiederhole 15 mal
+  hinlegen
+  f
+*wiederhole
+tr;f;tr;schritt(15);t2
+wiederhole 15 mal
+  hinlegen(blau)
+  f
+*wiederhole
+tr;f;tr;schritt(15);t2
+wiederhole 15 mal
+  hinlegen
+  f
+*wiederhole
+tr;f;tr;schritt(15);t2
+wiederhole 15 mal
+  hinlegen(blau)
+  f
+*wiederhole
+tr;f;tr;schritt(15);t2
+wiederhole 15 mal
+  hinlegen
+  f
+*wiederhole
+tr;f;tr;schritt(15);tr
+wiederhole 5 mal
+  hinlegen(blau)
+  f
+*wiederhole
+
+{ number blocks }
+toDecimal1;tl;f;t2
+decimalBlock
+toDecimal1;tr;schritt(3)
+decimalBlock
+
+toDecimal2;tl;f;t2
+decimalBlock
+toDecimal2;tr;schritt(3)
+decimalBlock
+
+toDecimal3;tl;schritt(2);tl;f;tl
+wiederhole 17 mal
+  hinlegen(blau)
+  f
+*wiederhole
+tl;schritt(5);tl
+decimalBlock
+tr;schritt(5);tl;schritt(4)
+decimalBlock
+tr;schritt(5);tl;schritt(4)
+decimalBlock
+tr;schritt(5);tl;schritt(4)
+decimalBlock
+
+{ numbers }
+toDecimal1;draw9
+toDecimal1;tr;schritt(4);tl;draw9
+
+toDecimal2;draw9
+toDecimal2;tr;schritt(4);tl;draw9
+
+{ operator }
+toDecimal2
+f;tr;schritt(11)
+hinlegen
+schritt(2)
+hinlegen
+tl
+hinlegen
+schritt(2)
+tl
+hinlegen
+t2
+hinlegen
+
+{ example number blocks}
+schritt(3)
+hinlegen(blau)
+f
+tl
+
+wiederhole solange nicht istWand
+  hinlegen(blau)
+  f
+*wiederhole
+t2
+wiederhole solange istZiegel
+  f
+*wiederhole
+wiederhole solange nicht istWand
+  hinlegen(blau)
+  f
+*wiederhole
+
+{ example numbers }
+tl;f
+decimalBlock;f;tr;schritt(5);t2
+draw3
+
+toAlu
+tr;schritt(39)
+decimalBlock;f;tr;schritt(5);t2
+draw2
+
+toAlu
+tr;schritt(43)
+decimalBlock;f;tr;schritt(5);t2
+draw1
+
+toAlu
+schritt(6);tr;schritt(35)
+decimalBlock;f;tr;schritt(5);t2
+draw6
+
+toAlu
+schritt(6);tr;schritt(39)
+decimalBlock;f;tr;schritt(5);t2
+draw5
+
+toAlu
+schritt(6);tr;schritt(43)
+decimalBlock;f;tr;schritt(5);t2
+draw4
+
+toAlu
+schritt(16);tr;schritt(39);t2
+decimalBlock;schritt(3);tr;f
+draw9
+
+toAlu
+schritt(16);tr;schritt(43);t2
+decimalBlock;schritt(3);tr;f
+draw8
+
+toAlu
+schritt(16);tr;schritt(43)
+wiederhole 5 mal
+  wiederhole 3 mal
+    hinlegen f
+  *wiederhole
+  tr;f;tr;schritt(3);t2
+*wiederhole
+f;tl;f
+draw7
