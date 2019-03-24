@@ -96,8 +96,8 @@ methode draw8
 
 methode draw6
   draw8
-  tr;f;tr;f
-  markeSetzen
+  tl;f;tl;f
+  markeLöschen
 *methode
 
 methode draw9
@@ -112,7 +112,7 @@ methode draw9
 methode toDecimal1
   toAlu
   tr
-  schritt(12)
+  schritt(17)
   tl
 *methode
 
@@ -137,7 +137,7 @@ methode toNextDecimal3Digit
 
 methode clearDecimal3
   toDecimal3;l
-  wiederhole 3 mal
+  wiederhole 4 mal
     r
     wiederhole 3 mal
       markeLöschen;f
@@ -152,7 +152,7 @@ methode clearDecimal3
 
 methode clearBlocks
   toRegister
-  wiederhole 3 mal
+  wiederhole 4 mal
     wiederhole solange istZiegel
       aufheben
     *wiederhole
@@ -163,29 +163,38 @@ methode clearBlocks
 methode registerToBlocks
   toRegister;tr
   wiederhole solange istWesten
-    wiederhole 10 mal
-      wenn istWesten dann
+    wiederhole solange istWesten
+      wenn istZiegel(blau) dann
+        rechtsDrehen
+      sonst
         wenn istMarke dann
           markeLöschen
-          t2
+          rechtsDrehen;rechtsDrehen
           wiederhole solange nicht istWand
-            f
+            schritt
             markeSetzen
           *wiederhole
         sonst
-          f
+          schritt
         *wenn
       *wenn
     *wiederhole
     wenn istOsten dann
-      tr
+      rechtsDrehen
       wenn istZiegel(9) dann
         aufheben(9)
         r
         wenn istZiegel(9) dann
           aufheben(9)
           r
-          hinlegen
+          wenn istZiegel(9) dann
+            aufheben(9)
+            r
+            hinlegen
+            l
+          sonst
+            hinlegen
+          *wenn
           l
         sonst
           hinlegen
@@ -194,9 +203,9 @@ methode registerToBlocks
       sonst
         hinlegen
       *wenn
-      tr
+      rechtsDrehen
     sonst
-      tr
+      rechtsDrehen
     *wenn
   *wiederhole
 *methode
@@ -254,6 +263,9 @@ methode registerToDecimal
   blocksToDecimal
 
   toRegister;r;r
+  blocksToDecimal
+
+  toRegister;r;r;r
   blocksToDecimal
 
   clearBlocks

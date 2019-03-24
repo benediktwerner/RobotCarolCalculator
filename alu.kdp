@@ -42,12 +42,12 @@ methode toRegister
 
 methode clear
   tr
-  wiederhole 10 mal
+  wiederhole 15 mal
     markeLöschen
     f
   *wiederhole
   t2
-  schritt(10)
+  schritt(15)
   tr
 *methode
 
@@ -122,7 +122,7 @@ methode addBit
 
 methode add
   toAlu
-  wiederhole 10 mal
+  wiederhole 15 mal
     addBit
     tr;f;tr
     schritt(2)
@@ -132,7 +132,7 @@ methode add
 
 methode resultToInput1
   toResult
-  wiederhole 10 mal
+  wiederhole 15 mal
     wenn istMarke dann
       t2;schritt(3)
       markeSetzen
@@ -147,7 +147,7 @@ methode resultToInput1
 
 methode resultToRegister
   toResult
-  wiederhole 10 mal
+  wiederhole 15 mal
     wenn istMarke dann
       f
       markeSetzen
@@ -161,7 +161,7 @@ methode resultToRegister
 
 methode input1ToRegister
   toInput1
-  wiederhole 10 mal
+  wiederhole 15 mal
     wenn istMarke dann
       schritt(4)
       markeSetzen
@@ -175,7 +175,7 @@ methode input1ToRegister
 
 methode input2ToRegister
   toInput2
-  wiederhole 10 mal
+  wiederhole 15 mal
     wenn istMarke dann
       schritt(3)
       markeSetzen
@@ -189,7 +189,7 @@ methode input2ToRegister
 
 methode registerToInput1
   toRegister;t2
-  wiederhole 10 mal
+  wiederhole 15 mal
     wenn istMarke dann
       schritt(4)
       markeSetzen
@@ -203,7 +203,7 @@ methode registerToInput1
 
 methode registerToInput2
   toRegister;t2
-  wiederhole 10 mal
+  wiederhole 15 mal
     wenn istMarke dann
       schritt(3)
       markeSetzen
@@ -218,7 +218,7 @@ methode registerToInput2
 methode invertRegister
   toRegister
   tr
-  wiederhole 10 mal
+  wiederhole 15 mal
     wenn istMarke dann
       markeLöschen
     sonst
