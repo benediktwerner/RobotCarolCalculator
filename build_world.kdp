@@ -76,6 +76,19 @@ decimalBlock
 tr;schritt(5);tl;schritt(4)
 decimalBlock
 
+tr;schritt(5);tl;schritt(6)
+decimalBlock
+tr;schritt(5);tl;schritt(4)
+decimalBlock
+
+tl;f;tl
+schritt(5)
+tl
+wiederhole solange nicht istWand
+  hinlegen(blau)
+  f
+*wiederhole
+
 { numbers }
 toDecimal1;draw9
 toDecimal1;tr;schritt(4);tl;draw9
