@@ -53,7 +53,17 @@ registerToInput1
 resultToRegister
 registerToInput2
 
-mul
+toDecimal2;f;tr;schritt(11)
+wenn istZiegel dann
+  mul
+sonst
+  f
+  wenn istZiegel dann
+    add
+  sonst
+    sub
+  *wenn
+*wenn
 
 resultToRegister
 registerToDecimal
