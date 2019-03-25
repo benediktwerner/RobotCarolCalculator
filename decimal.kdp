@@ -372,6 +372,23 @@ methode registerToDecimal
   clearBlocks
 *methode
 
+methode registerToDecimalNegative
+  registerToBlocks
+
+  toRegister
+  blocksToDecimal
+
+  toRegister;r
+  blocksToDecimal
+
+  toDecimal3
+  schritt(2);tr;schritt(8)
+  markeSetzen;f
+  markeSetzen
+
+  clearBlocks
+*methode
+
 methode registerToDecimalRemainder
   registerToBlocks
 

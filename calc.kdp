@@ -68,6 +68,20 @@ sonst
     *wenn
   sonst
     sub
+    toResult
+    tr;schritt(14)
+    wenn istMarke dann {negative result}
+      resultToRegister
+      registerToInput2
+      invertInput2
+      toInput1
+      clear
+      setCarry
+      add
+      resultToRegister
+      registerToDecimalNegative
+      beenden
+    *wenn
   *wenn
 *wenn
 
