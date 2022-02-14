@@ -37,7 +37,7 @@ methode toResult
 
 methode toRegister
   toAlu
-  schritt(4)
+  schritt(6)
 *methode
 
 methode clear
@@ -149,34 +149,6 @@ methode resultToRegister
   toResult
   wiederhole 15 mal
     wenn istMarke dann
-      f
-      markeSetzen
-    sonst
-      f
-      markeLöschen
-    *wenn
-    tr;f;tr;f;t2
-  *wiederhole
-*methode
-
-methode input1ToRegister
-  toInput1
-  wiederhole 15 mal
-    wenn istMarke dann
-      schritt(4)
-      markeSetzen
-    sonst
-      schritt(4)
-      markeLöschen
-    *wenn
-    tr;f;tr;schritt(4);t2
-  *wiederhole
-*methode
-
-methode input2ToRegister
-  toInput2
-  wiederhole 15 mal
-    wenn istMarke dann
       schritt(3)
       markeSetzen
     sonst
@@ -187,17 +159,45 @@ methode input2ToRegister
   *wiederhole
 *methode
 
+methode input1ToRegister
+  toInput1
+  wiederhole 15 mal
+    wenn istMarke dann
+      schritt(6)
+      markeSetzen
+    sonst
+      schritt(6)
+      markeLöschen
+    *wenn
+    tr;f;tr;schritt(6);t2
+  *wiederhole
+*methode
+
+methode input2ToRegister
+  toInput2
+  wiederhole 15 mal
+    wenn istMarke dann
+      schritt(5)
+      markeSetzen
+    sonst
+      schritt(5)
+      markeLöschen
+    *wenn
+    tr;f;tr;schritt(5);t2
+  *wiederhole
+*methode
+
 methode registerToInput1
   toRegister;t2
   wiederhole 15 mal
     wenn istMarke dann
-      schritt(4)
+      schritt(6)
       markeSetzen
     sonst
-      schritt(4)
+      schritt(6)
       markeLöschen
     *wenn
-    tl;f;tl;schritt(4);t2
+    tl;f;tl;schritt(6);t2
   *wiederhole
 *methode
 
@@ -205,13 +205,13 @@ methode registerToInput2
   toRegister;t2
   wiederhole 15 mal
     wenn istMarke dann
-      schritt(3)
+      schritt(5)
       markeSetzen
     sonst
-      schritt(3)
+      schritt(5)
       markeLöschen
     *wenn
-    tl;f;tl;schritt(3);t2
+    tl;f;tl;schritt(5);t2
   *wiederhole
 *methode
 

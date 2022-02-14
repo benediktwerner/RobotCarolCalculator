@@ -19,34 +19,34 @@ methode decimalBlock
 
 { alu }
 
+methode aluStripRed
+  wiederhole 15 mal
+    hinlegen
+    f
+  *wiederhole
+  tr;f;tr;schritt(15);t2
+*methode
+
+methode aluStripBlue
+  wiederhole 15 mal
+    hinlegen(blau)
+    f
+  *wiederhole
+  tr;f;tr;schritt(15);t2
+*methode
+
 toAlu;tr
 schritt(15);t2
-wiederhole 15 mal
-  hinlegen
-  f
-*wiederhole
-tr;f;tr;schritt(15);t2
-wiederhole 15 mal
-  hinlegen(blau)
-  f
-*wiederhole
-tr;f;tr;schritt(15);t2
-wiederhole 15 mal
-  hinlegen
-  f
-*wiederhole
-tr;f;tr;schritt(15);t2
-wiederhole 15 mal
-  hinlegen(blau)
-  f
-*wiederhole
-tr;f;tr;schritt(15);t2
-wiederhole 15 mal
-  hinlegen
-  f
-*wiederhole
-tr;f;tr;schritt(15);tr
-wiederhole 5 mal
+aluStripRed
+aluStripRed
+aluStripBlue
+aluStripRed
+aluStripBlue
+aluStripBlue
+aluStripRed
+aluStripBlue
+tl
+wiederhole 8 mal
   hinlegen(blau)
   f
 *wiederhole

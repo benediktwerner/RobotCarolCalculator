@@ -173,7 +173,7 @@ methode clearDecimal3
 *methode
 
 methode clearBlocks
-  toRegister
+  toRegister;f
   wiederhole 4 mal
     wiederhole solange istZiegel
       aufheben
@@ -188,32 +188,32 @@ methode registerToBlocks
   schritt(13)
   wenn istMarke dann
     markeLöschen
-    t2;schritt(13);tr
+    t2;schritt(13);tr;f
     hinlegen(2);r
     hinlegen(9);r
     hinlegen(1);r
     hinlegen(8)
-    tl;schritt(3);t2
+    tl;schritt(3);tl;f;tl
   sonst
     t2;schritt
     wenn istMarke dann
         markeLöschen
-        schritt(12);tr
+        schritt(12);tr;f
         hinlegen(6);r
         hinlegen(9);r
         r
         hinlegen(4)
-        tl;schritt(3);t2
+        tl;schritt(3);tl;f;tl
     sonst
       schritt
       wenn istMarke dann
         markeLöschen
-        schritt(11);tr
+        schritt(11);tr;f
         hinlegen(8);r
         hinlegen(4);r
         r
         hinlegen(2)
-        tl;schritt(3);t2
+        tl;schritt(3);tl;f;tl
       sonst
         schritt(11);t2
       *wenn
@@ -238,7 +238,7 @@ methode registerToBlocks
       *wenn
     *wiederhole
     wenn istOsten dann
-      rechtsDrehen
+      rechtsDrehen;f
       wenn istZiegel(9) dann
         aufheben(9)
         r
@@ -261,7 +261,7 @@ methode registerToBlocks
       sonst
         hinlegen
       *wenn
-      rechtsDrehen
+      t2;f;tl
     sonst
       rechtsDrehen
     *wenn
@@ -357,16 +357,16 @@ methode blocksToDecimalRemainder
 methode registerToDecimal
   registerToBlocks
 
-  toRegister
+  toRegister;f
   blocksToDecimal
 
-  toRegister;r
+  toRegister;f;r
   blocksToDecimal
 
-  toRegister;r;r
+  toRegister;f;r;r
   blocksToDecimal
 
-  toRegister;r;r;r
+  toRegister;f;r;r;r
   blocksToDecimal
 
   clearBlocks
@@ -375,10 +375,10 @@ methode registerToDecimal
 methode registerToDecimalNegative
   registerToBlocks
 
-  toRegister
+  toRegister;f
   blocksToDecimal
 
-  toRegister;r
+  toRegister;f;r
   blocksToDecimal
 
   toDecimal3
@@ -392,23 +392,24 @@ methode registerToDecimalNegative
 methode registerToDecimalRemainder
   registerToBlocks
 
-  toRegister
+  toRegister;f
   blocksToDecimalRemainder
 
-  toRegister;r
+  toRegister;f;r
   blocksToDecimalRemainder
 
   clearBlocks
 *methode
 
 methode decimalToInput2
+  { starts at top right corner looking south }
   f;f;tr;f
   wenn nicht istMarke dann {0,1,7}
     f
     wenn istMarke dann {0}
-      toInput2;clear;tr
+      toInput2; clear
     sonst
-      tr;f;f
+      tr;schritt(2)
       wenn istMarke dann {7}
         toInput2
         clear
@@ -416,41 +417,45 @@ methode decimalToInput2
         markeSetzen;f
         markeSetzen;f
         markeSetzen
-      sonst {1}
-        toInput2;clear
-        markeSetzen
+      sonst {0, 1}
+        tr; schritt(2)
+        wenn istMarke dann {1}
+          toInput2; clear
+          markeSetzen
+        sonst {0}
+          toInput2; clear
+        *wenn
       *wenn
     *wenn
   sonst {2,3,4,5,6,8,9}
-    f
-    wenn nicht istMarke dann {3}
-      toInput2;clear;tr
-      markeSetzen;f
-      markeSetzen
-    sonst {2,4,5,6,8,9}
-      tl;f
-      wenn istMarke dann {2,6,8}
-        t2;f;f
-        wenn istMarke dann {6,8}
-          tr;f;f
-          wenn istMarke dann {8}
-            toInput2;clear;tr
-            f;f;f
-            markeSetzen
-          sonst {6}
-            toInput2;clear;tr
-            f
-            markeSetzen;f
-            markeSetzen
-          *wenn
-        sonst {2}
-          toInput2;clear;tr
-          f;markeSetzen
-        *wenn
-      sonst {4,5,9}
+    f;tl;f
+    wenn istMarke dann {2,6,8}
+      t2;f;f
+      wenn istMarke dann {6,8}
+        tr;f;f
+        wenn istMarke dann {8}
+        toInput2;clear;tr
+        f;f;f
+        markeSetzen
+        sonst {6}
+        toInput2;clear;tr
         f
-        wenn istMarke dann {5,9}
-          t2;f;f;f;tr;f;f
+        markeSetzen;f
+        markeSetzen
+        *wenn
+      sonst {2}
+        toInput2;clear;tr
+        f;markeSetzen
+      *wenn
+    sonst {3,4,5,9}
+      f
+      wenn istMarke dann {3,5,9}
+        t2;f;f;f
+        wenn nicht istMarke dann {3}
+          toInput2;clear;tr
+          markeSetzen;f;markeSetzen
+        sonst {5,9}
+          tr;f;f
           wenn istMarke dann {9}
             toInput2;clear;tr
             markeSetzen
@@ -462,11 +467,11 @@ methode decimalToInput2
             f;f
             markeSetzen
           *wenn
-        sonst {4}
-          toInput2;clear;tr
-          f;f
-          markeSetzen
         *wenn
+      sonst {4}
+        toInput2;clear;tr
+        f;f
+        markeSetzen
       *wenn
     *wenn
   *wenn
