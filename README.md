@@ -19,3 +19,8 @@ The other red line further down is a register for saving and moving values aroun
 All operations are emulated using addition.
 Subtraction is just addition of the inverted value plus a carry.
 Multiplication is just repeated addition and division is repeated subtraction.
+
+## License
+
+All the code in this repository is in the public domain. Or if you prefer, you may also use it under the [MIT license](LICENSE-MIT) or [CC0 license](LICENSE-CC0).
+
